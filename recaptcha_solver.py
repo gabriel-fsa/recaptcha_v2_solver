@@ -34,7 +34,7 @@ def delay ():
     time.sleep(random.randint(2,3))
 
 #create chrome driver
-driver = webdriver.Chrome(os.getcwd()+"\\webdriver\\chromedriver.exe") 
+driver = webdriver.Chrome(ChromeDriverManager().install()) 
 
 
 delay()
@@ -73,7 +73,7 @@ print("[INFO] Audio src: %s"%src)
 urllib.request.urlretrieve(src, os.getcwd()+"\\sample.mp3")
 sound = pydub.AudioSegment.from_mp3(os.getcwd()+"\\sample.mp3")
 sound.export(os.getcwd()+"\\sample.wav", format="wav")
-sample_audio = sr.AudioFile(os.getcwd()+"\\sample.wav")
+sample_audio = sr.AudioFile(os.getcwd()+"\\sample.mp3")
 r= sr.Recognizer()
 
 with sample_audio as source:
